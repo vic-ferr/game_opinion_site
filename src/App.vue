@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <MenuNav />
     <router-view />
   </div>
 </template>
+<script>
+import MenuNav from "@/components/MenuNav.vue";
+export default {
+  name: "app",
+  components: {
+    MenuNav,
+  },
+};
+</script>
 
 <style>
 #app {
@@ -16,6 +22,25 @@
   text-align: center;
   color: #2c3e50;
 }
+.icon-ft {
+  color: white;
+  margin-right: 5px;
+}
+.icon-home {
+  color: white;
+  margin-right: 5px;
+}
+.icon-opinion {
+  color: white;
+  margin-right: 5px;
+}
+.icon-admin {
+  color: white;
+  margin-right: 5px;
+}
+.nav-link {
+  color: white;
+}
 
 nav {
   padding: 30px;
@@ -23,10 +48,10 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #f1f4f7;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #f5faf8;
 }
 </style>
