@@ -6,10 +6,17 @@
 </template>
 <script>
 import MenuNav from "@/components/MenuNav.vue";
+import { mapActions } from "vuex";
 export default {
   name: "app",
   components: {
     MenuNav,
+  },
+  created() {
+    this.gameData();
+  },
+  methods: {
+    ...mapActions(["gameData"]),
   },
 };
 </script>
