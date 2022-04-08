@@ -6,7 +6,7 @@
         v-for="(game, i) in games"
         :key="i"
       >
-        <ModalCard :titleGame="game" />
+        <ModalCard :titleGame="game.name" :id="i" />
         <div class="card" style="width: 18rem">
           <img
             :src="game.background_image"
@@ -27,7 +27,7 @@
               class="btn btn-primary"
               @click="addopinion(game)"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              :data-bs-target="'#miModal' + i"
             >
               Opinar
             </button>
@@ -46,6 +46,11 @@ export default {
     games: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    addopinion(game) {
+      console.log(game);
     },
   },
   components: {

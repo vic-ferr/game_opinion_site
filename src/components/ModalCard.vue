@@ -3,7 +3,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      :id="'miModal' + id"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -12,7 +12,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">
-              Danos tu Opinion : <br />{{ titleGame.name }}
+              Danos tu Opinion : <br />{{ titleGame }}
             </h5>
             <button
               type="button"
@@ -21,18 +21,33 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <label
+              >nombre : <input v-model="nombre" type="text" name="nombre"
+            /></label>
+
+            <div class="form-floating">
+              opinion
+              <textarea
+                class="form-control"
+                placeholder="Leave a comment here"
+                id="floatingTextarea2"
+                style="height: 100px"
+                v-model="opinion"
+              ></textarea>
+            </div>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
-              @click="guardaOpinion(game.name)"
+              @click="guardaOpinion(titleGame)"
             >
-              Editar Cambios
+              Editar Opinion
             </button>
             <button type="button" class="btn btn-primary">
-              Guardar Cambios
+              Guardar Opinion
             </button>
           </div>
         </div>
@@ -53,15 +68,19 @@ export default {
   },
   props: {
     titleGame: {
-      type: Object,
-      default: () => {},
+      type: String,
+      default: "",
+    },
+    id: {
+      type: Number,
+      default: null,
     },
   },
   methods: {
     ...mapMutations(["PUSH_MUTATION"]),
     guardaOpinion(game) {
       const methodsOpinion = {
-        name: this.nombre,
+        titleGame: this.name,
         game: game,
         opinion: this.opinion,
       };
