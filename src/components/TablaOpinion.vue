@@ -18,7 +18,13 @@
               <td>{{ opinion.game }}</td>
               <td>{{ opinion.opinion }}</td>
               <td>
-                <button class="btn bg-info text-dark">Editar</button>
+                <button class="btn bg-info text-dark">
+                  <router-link
+                    to="/editando/:id"
+                    class="text-white text-decoration-none"
+                    >Editar</router-link
+                  >
+                </button>
               </td>
               <td>
                 <button
