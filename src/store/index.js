@@ -15,7 +15,14 @@ export default new Vuex.Store({
       state.gameState = payload;
     },
     PUSH_MUTATION(state, payload) {
-      state.gameState.push(payload);
+      state.opinionState.push(payload);
+    },
+    BORRAR_OPINION(state, payload) {
+      state.opinionState.splice(payload, 1);
+    },
+    EDITAR_OPINION(state, payload) {
+      state.opinionState[payload.i].name = payload.name;
+      state.opinionState[payload.i].opinion = payload.opinion;
     },
   },
   actions: {

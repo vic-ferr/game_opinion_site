@@ -11,9 +11,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
+            <h2 class="modal-title" id="exampleModalLabel">
               Danos tu Opinion : <br />{{ titleGame }}
-            </h5>
+            </h2>
             <button
               type="button"
               class="btn-close"
@@ -42,11 +42,16 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              @click="borraOpinion()"
+            >
+              Limpiar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
               @click="guardaOpinion(titleGame)"
             >
-              Editar Opinion
-            </button>
-            <button type="button" class="btn btn-primary">
               Guardar Opinion
             </button>
           </div>
@@ -79,12 +84,18 @@ export default {
   methods: {
     ...mapMutations(["PUSH_MUTATION"]),
     guardaOpinion(game) {
-      const methodsOpinion = {
+      const opinionCard = {
         titleGame: this.name,
         game: game,
         opinion: this.opinion,
+        name: this.nombre,
       };
-      this.PUSH_MUTATION(methodsOpinion);
+      this.PUSH_MUTATION(opinionCard);
+      this.borraOpinion();
+    },
+    borraOpinion() {
+      this.nombre = "";
+      this.opinion = "";
     },
   },
 };
